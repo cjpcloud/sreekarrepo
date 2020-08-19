@@ -1,0 +1,93 @@
+{
+     "ProductRequest": [
+    {
+      "ResidentialBuilding": {
+        "ConstructionFeatures": {
+          "YearBuiltRange": {
+            "Value": 2004
+          },
+          "SquareFootageRange": {
+            "Value": 2300
+          },
+          "ArchitecturalStyleTypeCode": "Detached",
+          "BuildingStoreyConstruction": {
+            "StoreyCountTypeCode": "2"
+          },
+          "FoundationTypeCode": "Basement",
+          "KitchenConstruction": {
+            "KitchenCountTypeCode": "1"
+          },
+          "BathroomConstruction": {
+            "BathroomCountTypeCode": "3.5"
+          },
+          "RoofConstructions": [
+            {
+              "RoofTypeCode": "Asphalt",
+              "Percentage": 1
+            }
+          ],
+          "ExteriorWallConstructions": [
+            {
+              "ExteriorWallTypeCode": "Brick Veneer",
+              "Percentage": 1
+            }
+          ],
+          "FinishedBasement": true,
+          "Garages": [
+            {
+              "GarageTypeCode": "Built-in Garage",
+              "NumberOfCars": 2
+            }
+          ]
+        },
+        "Valuation": {
+          "ReplacementCost": 500000
+        },
+        "Address": {
+          "ID": "00A-00A-00J",
+          "StreetNumber": 440,
+          "Street": {
+            "Name": "Sauve",
+            "StreetType": {
+              "Value": {
+                "en": "Crescent",
+                "fr": "Crescent"
+              }
+            }
+          },
+          "Municipality": {
+            "StateProvince": {
+              "Code": "ON"
+            },
+            "Name": {
+              "en": "Ontario",
+              "fr": "Ontario"
+            },
+            "Country": {
+              "Code": "CA",
+              "Name": {
+                "en": "Canada",
+                "fr": "Canada"
+              }
+            }
+          },
+          "PostalCode": {
+            "Value": "N2T2Y8"
+          },
+          "Geocodes": [
+            {
+              "ProviderCode": "Google",
+              "PrecisionCode": "R",
+              "Geocode": {
+                "Latitude": 43.449666,
+                "Longitude": -80.577857
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+  }
+
