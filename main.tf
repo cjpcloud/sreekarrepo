@@ -1,34 +1,27 @@
-provider "datadog" {
-  validate = "false"
- 
-}
-resource "datadog_synthetics_test" "test_api" {
+resource "datadog_synthetics_test" "auth-ct-optaservice" {
   type = "api"
-  subtype = "http"
+  subtype = "${var.subtype}"
   request = {
-    method = "POST"
-    url = "http://opta-service-bus.prodmsenv-k8s.optaservice.com/?Products=InspectionScore"
-    body = file("/root/sreekar/test.json")
+    method = "${var.method}"
+    url = "https://auth-ct.optaservice.com/auth/realms/opta/protocol/openid-connect/token"
+    body = "grant_type=password&client_secret=d23cf6e4-b621-41ec-ba02-008f1adcb200&client_id=opta_single_service&username=newrelic.monitor@scm.ca&password=secret123&scope=offline_access"
     }
   request_headers = {
-    host = "opta-service-bus.prodmsenv-k8s.optaservice.com"
-    Content-Type = "application/json"
-
+    Content-Type = "application/x-www-form-urlencoded"                                                                                                                                                             
   }
 
   assertion {
       type = "statusCode"
-      operator = "is"
-      target = "200"
+      operator = "${var.operator}"
+      target = "${var.target}"
   }
-  locations = [ "aws:us-east-1" ]
+  locations = [ "aws:us-east-2" ]
   options = {
-    tick_every = 900
+    tick_every = "${var.tick_every}"
   }
-  name = "An API test on example.org"
+  name = "auth-ct-optaservice"
   message = "Notify @pagerduty"
   tags = ["foo:bar", "foo", "env:test"]
 
-  status = "live"
+  status = "${var.status}"
 }
-
