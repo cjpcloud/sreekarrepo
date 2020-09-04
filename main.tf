@@ -1,10 +1,10 @@
 resource "datadog_synthetics_test" "auth-ct-optaservice" {
   type = "api"
-  subtype = "${var.subtype}"
+  subtype = "http"
   request = {
-    method = "${var.method}"
+    method = "POST"
     url = "https://auth-ct.optaservice.com/auth/realms/opta/protocol/openid-connect/token"
-    body = "grant_type=password&client_secret=d23cf6e4-b621-41ec-ba02-008f1adcb200&client_id=opta_single_service&username=newrelic.monitor@scm.ca&password=secret123&scope=offline_access"
+    body = "${file("${path.module}/test.json")}"
     }
   request_headers = {
     Content-Type = "application/x-www-form-urlencoded"                                                                                                                                                             
@@ -12,12 +12,12 @@ resource "datadog_synthetics_test" "auth-ct-optaservice" {
 
   assertion {
       type = "statusCode"
-      operator = "${var.operator}"
+      operator = "is"
       target = "${var.target}"
   }
   locations = [ "aws:us-east-2" ]
   options = {
-    tick_every = "${var.tick_every}"
+    tick_every = "900"
   }
   name = "auth-ct-optaservice"
   message = "Notify @pagerduty"
