@@ -3,12 +3,19 @@ resource "datadog_synthetics_test" "auth-ct-optaservice" {
   subtype = "http"
   request = {
     method = "POST"
-    url = "https://auth-ct.optaservice.com/auth/realms/opta/protocol/openid-connect/token"
-    body = "${file("${path.module}/test.json")}"
-    }
+    uri = "http://address.ilookabout.com/AddressingService/? + ${var.params}"
+ #   body = "${var.userId}"
+    stringToHash = "${var.stringToHash}"
+    hash = "${var.crypto}.createHash('md5').update('${var.stringToHash}').digest('hex').toUpperCase().slice(0, 16)"
+    token = "${var.partnerId} + [ batch-proc, *, Math.floor(new Date().getTime() / 1000), require('crypto').createHash('md5').update('ByTheWay + SCM +  + batch-proc + * + Math.floor(new Date().getTime() / 1000)').digest('hex').toUpperCase().slice(0, 16)].join('_')"
+   
+    payload = "${var.payload}"
+   }
   request_headers = {
     Content-Type = "application/x-www-form-urlencoded"                                                                                                                                                             
-  }
+    
+}
+
 
   assertion {
       type = "statusCode"

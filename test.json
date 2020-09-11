@@ -1,5 +1,10 @@
+
 {
-    "fruit": "Apple",
-    "size": "Large",
-    "color": "Red"
+	"output": "xml",
+	"token": "SCM + [, batch-proc, *, Math.floor(new Date().getTime() / 1000), require('crypto').createHash('md5').update('ByTheWay + SCM +  + batch-proc + * + Math.floor(new Date().getTime() / 1000)').digest('hex').toUpperCase().slice(0, 16)].join('_')",
+	"systemID": "1",
+	"streetNumber": "3202",
+	"streetFullName": "TANIA",
+	"province": "ON",
+	"ServiceProviderID": ""
 }
